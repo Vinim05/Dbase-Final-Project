@@ -2,11 +2,11 @@
 
 
 ## Tables: 
-Books –-> book_id(pk), title, author, publish_date, genre 
-Users –-> name, user_id(pk) 
-Checkouts (relationship) –-> checkout_id(pk) + book_id(fk) + user_id(fk) + lib_id(fk), checkout_date, due_date 
-Library –-> city, name, lib_id
-Available_Books (for each library location) -> avail_id(pk), lib_id (fk), book_id(fk)
+- Books –-> book_id(pk), title, author, publish_date, genre 
+- Users –-> name, user_id(pk) 
+- Checkouts (relationship) –-> checkout_id(pk) + book_id(fk) + user_id(fk) + lib_id(fk), checkout_date, due_date 
+- Library –-> city, name, lib_id
+- Available_Books (for each library location) -> avail_id(pk), lib_id (fk), book_id(fk)
 
 ## Features:
 1.	browse all books
