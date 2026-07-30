@@ -156,7 +156,7 @@ def view_book_availability():
 
                 print(f"\n\nLibraries that have '{result[0]}':\n")
             
-                cursor.execute("SELECT l.city, l.name \
+                cursor.execute("SELECT l.library_id, l.city, l.name \
                                 FROM libraries AS l  \
                                 INNER JOIN availability as a \
                                 ON l.library_id = a.library_id \
