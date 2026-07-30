@@ -1,0 +1,105 @@
+pip install mysql-connector-python
+pip install tabulate
+
+CREATE TABLE books (
+    book_id INT PRIMARY KEY,
+    title VARCHAR(100),
+    author VARCHAR(100),
+    publish_date DATE,
+    genre VARCHAR(50)
+);
+
+INSERT INTO books (book_id, title, author, publish_date, genre) VALUES
+(1, 'To Kill a Mockingbird', 'Harper Lee', '1960-07-11', 'Fiction'),
+(2, '1984', 'George Orwell', '1949-06-08', 'Fiction'),
+(3, 'The Great Gatsby', 'F. Scott Fitzgerald', '1925-04-10', 'Fiction'),
+(4, 'The Catcher in the Rye', 'J.D. Salinger', '1951-07-16', 'Fiction'),
+(5, 'The Book Thief', 'Markus Zusak', '2005-03-14', 'Fiction'),
+(6, 'The Alchemist', 'Paulo Coelho', '1988-01-01', 'Fiction'),
+
+(7, 'Harry Potter and the Sorcerer''s Stone', 'J.K. Rowling', '1997-06-26', 'Fantasy'),
+(8, 'The Hobbit', 'J.R.R. Tolkien', '1937-09-21', 'Fantasy'),
+(9, 'The Lion, the Witch and the Wardrobe', 'C.S. Lewis', '1950-10-16', 'Fantasy'),
+(10, 'Dune', 'Frank Herbert', '1965-08-01', 'Fantasy'),
+(11, 'A Game of Thrones', 'George R.R. Martin', '1996-08-06', 'Fantasy'),
+
+(12, 'The Da Vinci Code', 'Dan Brown', '2003-04-01', 'Mystery'),
+(13, 'The Girl with the Dragon Tattoo', 'Stieg Larsson', '2005-08-16', 'Mystery'),
+(14, 'Murder on the Orient Express', 'Agatha Christie', '1934-01-01', 'Mystery'),
+(15, 'The Hound of the Baskervilles', 'Arthur Conan Doyle', '1902-04-01', 'Mystery'),
+
+(16, 'Pride and Prejudice', 'Jane Austen', '1813-01-28', 'Romance'),
+(17, 'The Fault in Our Stars', 'John Green', '2012-01-10', 'Romance'),
+(18, 'The Notebook', 'Nicholas Sparks', '1996-10-01', 'Romance'),
+
+(19, 'The Shining', 'Stephen King', '1977-01-28', 'Horror'),
+(20, 'Dracula', 'Bram Stoker', '1897-05-26', 'Horror');
+
+
+CREATE TABLE libraries (    
+      library_id INT PRIMARY KEY,    
+      city VARCHAR(50),    
+      name VARCHAR(100));
+
+INSERT INTO libraries (library_id, city, name) VALUES
+(1, 'Cincinnati', 'Downtown Main Library'),
+(2, 'Cincinnati', 'Clifton Branch Library'),
+(3, 'Cincinnati', 'Oakley Community Library'),
+(4, 'Cincinnati', 'Central Library'),
+(5, 'Columbus', 'Central Library'),
+(6, 'Columbus', 'Northside Library'),
+(7, 'Cleveland', 'Central Library'),
+(8, 'Cleveland', 'East Side Library');
+
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    fname VARCHAR(50) NOT NULL,
+    lname VARCHAR(50) NOT NULL
+);
+
+INSERT INTO users (fname, lname)
+VALUES
+('John', 'Smith'),
+('Jane', 'Doe'),
+('Alice', 'Johnson');
+
+
+CREATE TABLE availability (
+    library_id INT NOT NULL,
+    book_id INT NOT NULL,
+    PRIMARY KEY (library_id, book_id),
+    FOREIGN KEY (library_id) REFERENCES libraries(library_id),
+    FOREIGN KEY (book_id) REFERENCES books(book_id)
+);
+
+
+INSERT INTO availability (library_id, book_id) VALUES
+
+-- 1 Cincinnati Downtown Main Library
+(1, 1), (1, 3), (1, 5), (1, 7), (1, 12), (1, 16), (1, 19), (1, 20),
+-- 2 Cincinnati Clifton Branch Library
+(2, 2), (2, 4), (2, 6), (2, 8), (2, 13), (2, 17), (2, 18), (2, 20),
+-- 3 Cincinnati Oakley Community Library
+(3, 1), (3, 2), (3, 5), (3, 9), (3, 10), (3, 14), (3, 16), (3, 19),
+-- 4 Cincinnati Central Library
+(4, 3), (4, 4), (4, 7), (4, 11), (4, 12), (4, 15), (4, 17), (4, 20),
+-- 5 Columbus Central Library
+(5, 1), (5, 6), (5, 8), (5, 10), (5, 13), (5, 14), (5, 18), (5, 19),
+-- 6 Columbus Northside Library
+(6, 2), (6, 5), (6, 7), (6, 9), (6, 11), (6, 15), (6, 16), (6, 20),
+-- 7 Cleveland Central Library
+(7, 3), (7, 4), (7, 6), (7, 8), (7, 12), (7, 17), (7, 18), (7, 19),
+-- 8 Cleveland East Side Library
+(8, 1), (8, 2), (8, 9), (8, 10), (8, 11), (8, 13), (8, 14), (8, 15);
+
+CREATE TABLE checkouts (
+    checkout_id INT AUTO_INCREMENT PRIMARY KEY,
+    book_id INT NOT NULL,
+    user_id INT NOT NULL,
+    lib_id INT NOT NULL,
+    checkout_date DATE NOT NULL,
+    due_date DATE NOT NULL,
+    FOREIGN KEY (book_id) REFERENCES books(book_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (lib_id) REFERENCES libraries(library_id)
+);
