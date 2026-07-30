@@ -77,3 +77,7 @@ Acceptance Criteria:
 - AC-04.4 — The system must record the transaction with the current date and calculate an accurate return due date.
 - AC-04.5 — A success confirmation showing the generated checkout_id, assigned user_id, and due_date must be displayed to the user.
 
+
+## ER Diagram
+
+![alt text](image.png)
