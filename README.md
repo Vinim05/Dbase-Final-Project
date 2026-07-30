@@ -107,7 +107,7 @@ As a staff of the library, I want to view all active book checkouts so that I ca
 
 ## ER Diagram
 
-![alt text](image.png)
+![alt text](ER_Diagram.png)
 
 
 ## Schema Design
