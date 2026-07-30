@@ -77,3 +77,34 @@ Acceptance Criteria:
 - AC-04.4 — The system must record the transaction with the current date and calculate an accurate return due date.
 - AC-04.5 — A success confirmation showing the generated checkout_id, assigned user_id, and due_date must be displayed to the user.
 
+
+## ER Diagram
+
+![alt text](image.png)
+
+
+## Schema Design
+
+### Strong Entities: 
+ 
+- Books (book_id(pk), title, author, publish_date, genre) 
+- Users (name, user_id(pk)) 
+- Library (city, name, lib_id(pk)) 
+ 
+
+### Weak Entities: 
+ 
+- Available_Books (for each library location) -> (lib_id (fk), book_id(fk)) (pk) 
+- FK Reference: Lib_ID: Library(Lib_ID), Book_ID: Books(Book_ID) 
+ 
+ 
+### Relations Tables: 
+ 
+- Checkouts (checkout_id(pk) + book_id(fk) + user_id(fk) + lib_id(fk), checkout_date, due_date) 
+- FK Reference: User_ID: User(User_ID), Lib_ID:Library(lib_ID), Book_ID:Books(Book_ID) 
+ 
+- Stocks (lib_ID) 
+- FK Reference: Lib_ID: Library(lib_ID) 
+
+- Contains (Book_ID) 
+- FK Reference: Book_ID: Book(Book_ID)
