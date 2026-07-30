@@ -21,6 +21,7 @@
 - Every checkout record must link to a valid user_id, book_id, and lib_id.
 - A book must exist in Available_Books at a lib_id to be checked out from that branch.
 - Upon checkout, a new user_id and checkout_id are created for the user.
+- Can only checkout book via book ID
 
 ## Use Cases
 
