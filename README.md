@@ -48,7 +48,7 @@ As a user, I want to search books by author, genre, or title so that I can quick
 **Acceptance Criteria:**
 - AC-02.1 — The search interface must include a text input search bar and a Submit action.
 - AC-02.2 — Entering a query must return all records matching the text across book title, author, or genre fields.
-- AC-02.4 — If no matching books are found, the system must present a "No books found matching your search" message.
+- AC-02.3 — If no matching books are found, the system must present a "No books found matching your search" message.
 
 ### USE CASE 3: VIEW BOOK AVAILABILITY BY LOCATION
 
@@ -76,6 +76,31 @@ Acceptance Criteria:
 - AC-04.3 — Upon successful submission, the system must automatically create a new user_id and a unique checkout_id.
 - AC-04.4 — The system must record the transaction with the current date and calculate an accurate return due date.
 - AC-04.5 — A success confirmation showing the generated checkout_id, assigned user_id, and due_date must be displayed to the user.
+
+### USE CASE 5: VIEW BOOKS BY LIBRARY LOCATION
+**Brief Use Case Description:**
+As a user, I want to select a specific library location branch to view the catalog of books stocked and available at that particular branch.
+
+**User Stories:**
+As a user, I want to select a library branch so that I can see which books are currently stocked at that location.
+
+**Acceptance Criteria:**
+- AC-05.1 — The system must allow the user to select or filter by a specific library branch using lib_id or library name.
+- AC-05.2 — Upon branch selection, the system must query Available_Books and display only the books stocked at that specified library location.
+- AC-05.3 — Each listed book entry must display its title, author, genre, publication date, and stock status for that branch.
+- AC-05.4 — If the selected library branch currently has no books in stock, the system must display a message reading "No books available at this library location."
+
+### USE CASE 6: VIEW ALL CHECKED OUT BOOKS
+**Brief Use Case Description:**
+Any librarian can view a list of all active book checkouts, including details about the user, book title, checkout location, and due date.
+
+**User Stories:**
+As a staff of the library, I want to view all active book checkouts so that I can track borrowed books, check due dates, and manage library operations.
+
+**Acceptance Criteria:**
+- AC-06.1 — The system must display a comprehensive list of active checkout records retrieved from the Checkouts table.
+- AC-06.2 — Each checkout record displayed must include the checkout_id, book title (book_id), user name (user_id), branch name (lib_id), checkout_date, and due_date.
+- AC-06.3 — If there are no active checkouts in the system, the display must show a clear "No checked out books" message.
 
 
 ## ER Diagram
