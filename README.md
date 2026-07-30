@@ -11,11 +11,12 @@
 ## Features:
 1.	browse all books
 2.	search bar (more comprehensive feature)
-     	Search by author
-      Genre
-      Name
-3.	Viewing book availability for each library location
-4.	Checkout a book
+     Search by author, 
+      Genre, 
+      Name, 
+  	Book ID
+4.	Viewing book availability for each library location
+5.	Checkout a book
 
 ## Constraints & Business Rules
 - Every checkout record must link to a valid user_id, book_id, and lib_id.
